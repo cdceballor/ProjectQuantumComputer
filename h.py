@@ -1,5 +1,6 @@
+import matplotlib.pyplot as plt
 import numpy as np
-
+from random import random
 
 ## Creamos estado inicial, dos qubit en |0>, es decir |00>
 zero = np.array([1,0]).reshape(2,1)
@@ -10,6 +11,7 @@ zero_zero = np.kron(zero,zero)
 i = 1/np.sqrt(2)
 h_1 = np.array([[i,i],[i,-i]])
 h_2 = np.kron(h_1,np.eye(2))
+
 
 ## operamos al primer estado
 t1 = h_2 @ zero_zero
@@ -30,5 +32,10 @@ t3 = h_2 @ t2
 ## esto deberia dar (0.5,0.5,0.5,-0.5), miren en qiskit
 print(t3)
 
-a = 9
-o = 2
+mos = [int(random()*4) for _ in range(100)]
+
+plt.title('MOS')
+plt.hist(mos, bins=60, alpha=1, edgecolor = 'black',  linewidth=1)
+plt.grid(True)
+plt.show()
+plt.clf()
