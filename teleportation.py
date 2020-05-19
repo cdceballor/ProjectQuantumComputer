@@ -88,13 +88,13 @@ def opq2z(q2):
     print(gatez(q2))
 
 def makeOperation():
-    q0 = np.array([[1.,0.],[0.,1.]]).reshape(2,2)
-    q1 = np.array([[0.,1.],[0.,1.]]).reshape(2,2)
-    q2 = np.array([[0.,1.],[1.,0.]]).reshape(2,2)
+    q0 = [1.,0.]
+    q1 = [0.,1.]
+    q2 = [0.,1.]
 
-    nmq0 = np.kron(q0, q0)
-    nmq1 = np.kron(q1, q1)
-    nmq2 = np.kron(q0, q0)
+    nmq0 = np.kron(q0, q1)
+    nmq1 = np.kron(q1, q0)
+    nmq2 = np.kron(q2, q2)
 
     print()
 
@@ -103,6 +103,7 @@ def makeOperation():
     secondEval(nmq1)
     print("Finaliza el proceso del segundo estado")
     firstEval(nmq2)
+    secondEval(nmq2)
     print("Finaliza el proceso del tercer estado")
     IwannaWinThisS(nmq0, nmq1)
     opq2x(q2)
